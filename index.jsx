@@ -1,16 +1,16 @@
-import urlBuilder from "lh3-googleusercontent-url-builder";
+import urlBuilder, {imageFormats} from "lh3-googleusercontent-url-builder";
 
-const Source = ({imageType, imageWidth, url}) => (
+const Source = ({imageFormat, imageWidth, url}) => (
   <source srcSet={`${urlBuilder(url, {
-    imageType: imageType,
+    imageFormat: imageFormat,
     width: imageWidth * 2
-  })} 2x, ${urlBuilder(url, {imageType: imageType, width: imageWidth * 2})} 1x`} type={`image/${imageType}`}/>
+  })} 2x, ${urlBuilder(url, {imageFormat: imageFormat, width: imageWidth * 2})} 1x`} type={`image/${imageFormat}`}/>
 );
-const GooglePicture = ({alt, imageType, imageWidth, url}) => (
+const GooglePicture = ({alt, imageFormat, imageWidth, url}) => (
   <picture>
-    <Source url={url} imageType="webp" imageWidth={imageWidth}/>
-    <Source url={url} imageType={imageType} imageWidth={imageWidth}/>
-    <img src={urlBuilder(url, {imageType: imageType, width: imageWidth})} alt={alt}/>
+    <Source url={url} imageFormat={imageFormats.WEBP} imageWidth={imageWidth}/>
+    <Source url={url} imageFormat={imageFormat} imageWidth={imageWidth}/>
+    <img src={urlBuilder(url, {imageFormat: imageFormat, width: imageWidth})} alt={alt}/>
   </picture>
 );
 

@@ -10,7 +10,7 @@ import { imageFormats } from 'lh3-googleusercontent-url-builder';
 import GooglePicture from 'react-google-picture';
 
 <GooglePicture
-  imageType={imageFormats.JPEG}
+  imageFormat={imageFormats.JPEG}
   imageWidth={600} // Pixels
   url="https://lh3.googleusercontent.com/ABC123etc"
 />

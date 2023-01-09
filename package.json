@@ -1,6 +1,6 @@
 {
   "name": "react-google-picture",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "React component for displaying an lh3.googleusercontent image efficiently",
   "main": "index.jsx",
   "scripts": {
