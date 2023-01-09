@@ -1,0 +1,32 @@
+{
+  "name": "react-google-picture",
+  "version": "0.1.0",
+  "description": "React component for displaying an lh3.googleusercontent image efficiently",
+  "main": "index.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/votemike/react-google-picture.git"
+  },
+  "keywords": [
+    "react",
+    "google",
+    "picture",
+    "html5",
+    "lh3.googleusercontent"
+  ],
+  "author": "Michael Gwynne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/votemike/react-google-picture/issues"
+  },
+  "homepage": "https://github.com/votemike/react-google-picture#readme",
+  "dependencies": {
+    "lh3-googleusercontent-url-builder": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "16 | 17 | 18"
+  }
+}
