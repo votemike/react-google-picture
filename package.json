@@ -1,6 +1,6 @@
 {
   "name": "react-google-picture",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React component for displaying an lh3.googleusercontent image efficiently",
   "main": "index.jsx",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/votemike/react-google-picture#readme",
   "dependencies": {
-    "lh3-googleusercontent-url-builder": "^2.0.0"
+    "lh3-googleusercontent-url-builder": "^2.2.0"
   },
   "peerDependencies": {
     "react": "16 || 17 || 18"
