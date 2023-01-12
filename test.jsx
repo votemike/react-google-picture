@@ -22,3 +22,19 @@ it('renders a 480px wide image on screens 600px and smaller and renders a 600px 
   );
   expect(container).toMatchSnapshot();
 });
+
+it('de-dupes repeated src-sets', () => {
+  const {container} = render(
+    <GooglePicture alt="The alt" imageFormat="png" widths={{defaultWidth: 600, 600: 480, 1200: 960}}
+                   url="https://lh3.googleusercontent.com/ABC123etc"/>
+  );
+  expect(container).toMatchSnapshot();
+});
+
+it('orders width lowest to highest, with default at the end', () => {
+  const {container} = render(
+    <GooglePicture alt="The alt" imageFormat="png" widths={{defaultWidth: 600, 1200: 960, 600: 480}}
+                   url="https://lh3.googleusercontent.com/ABC123etc"/>
+  );
+  expect(container).toMatchSnapshot();
+});

@@ -3,7 +3,6 @@ import urlBuilder, {imageFormats} from "lh3-googleusercontent-url-builder";
 const Source = ({imageFormat, defaultWidth, otherWidths, url}) => {
   const srcSets = [];
   const sizes = [];
-  // order otherWidths lowest to highest
 
   for (const [screenWidth, width] of Object.entries(otherWidths)) {
     srcSets.push(`${urlBuilder(url, {
@@ -27,10 +26,10 @@ const Source = ({imageFormat, defaultWidth, otherWidths, url}) => {
   })} ${defaultWidth * 2}w`);
   sizes.push(`${defaultWidth}px`);
 
-  //unique the srcSet array
+  const dedupedSrcSet = [...new Set(srcSets)];
 
   return (
-    <source srcSet={srcSets.join(', ')} sizes={sizes.join(', ')} type={`image/${imageFormat}`}/>
+    <source srcSet={dedupedSrcSet.join(', ')} sizes={sizes.join(', ')} type={`image/${imageFormat}`}/>
   )
 };
 const GooglePicture = ({alt, imageFormat, widths: {defaultWidth, ...otherWidths}, url}) => (
