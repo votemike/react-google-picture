@@ -10,8 +10,9 @@ import { imageFormats } from 'lh3-googleusercontent-url-builder';
 import GooglePicture from 'react-google-picture';
 
 <GooglePicture
+  alt="Image alt text"
   imageFormat={imageFormats.JPEG}
-  imageWidth={600} // Pixels
+  widths={{defaultWidth: 600, 600: 480, 1200: 960}} // Default width, then width (in pixels) for different screen widths
   url="https://lh3.googleusercontent.com/ABC123etc"
 />
 ```
