@@ -4,7 +4,7 @@ const Source = ({imageFormat, imageWidth, url}) => (
   <source srcSet={`${urlBuilder(url, {
     imageFormat: imageFormat,
     width: imageWidth * 2
-  })} 2x, ${urlBuilder(url, {imageFormat: imageFormat, width: imageWidth * 2})} 1x`} type={`image/${imageFormat}`}/>
+  })} 2x, ${urlBuilder(url, {imageFormat: imageFormat, width: imageWidth})} 1x`} type={`image/${imageFormat}`}/>
 );
 const GooglePicture = ({alt, imageFormat, imageWidth, url}) => (
   <picture>
