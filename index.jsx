@@ -1,16 +1,42 @@
 import urlBuilder, {imageFormats} from "lh3-googleusercontent-url-builder";
 
-const Source = ({imageFormat, imageWidth, url}) => (
-  <source srcSet={`${urlBuilder(url, {
+const Source = ({imageFormat, defaultWidth, otherWidths, url}) => {
+  const srcSets = [];
+  const sizes = [];
+
+  for (const [screenWidth, width] of Object.entries(otherWidths)) {
+    srcSets.push(`${urlBuilder(url, {
+      imageFormat: imageFormat,
+      width: width
+    })} ${width}w`);
+    srcSets.push(`${urlBuilder(url, {
+      imageFormat: imageFormat,
+      width: width * 2
+    })} ${width * 2}w`);
+    sizes.push(`(max-width: ${screenWidth}px) ${width}px`);
+  };
+
+  srcSets.push(`${urlBuilder(url, {
     imageFormat: imageFormat,
-    width: imageWidth * 2
-  })} 2x, ${urlBuilder(url, {imageFormat: imageFormat, width: imageWidth})} 1x`} type={`image/${imageFormat}`}/>
-);
-const GooglePicture = ({alt, imageFormat, imageWidth, url}) => (
+    width: defaultWidth
+  })} ${defaultWidth}w`);
+  srcSets.push(`${urlBuilder(url, {
+    imageFormat: imageFormat,
+    width: defaultWidth * 2
+  })} ${defaultWidth * 2}w`);
+  sizes.push(`${defaultWidth}px`);
+
+  const dedupedSrcSet = [...new Set(srcSets)];
+
+  return (
+    <source srcSet={dedupedSrcSet.join(', ')} sizes={sizes.join(', ')} type={`image/${imageFormat}`}/>
+  )
+};
+const GooglePicture = ({alt, imageFormat, widths: {defaultWidth, ...otherWidths}, url}) => (
   <picture>
-    <Source url={url} imageFormat={imageFormats.WEBP} imageWidth={imageWidth}/>
-    <Source url={url} imageFormat={imageFormat} imageWidth={imageWidth}/>
-    <img src={urlBuilder(url, {imageFormat: imageFormat, width: imageWidth})} alt={alt}/>
+    <Source url={url} imageFormat={imageFormats.WEBP} defaultWidth={defaultWidth} otherWidths={otherWidths}/>
+    <Source url={url} imageFormat={imageFormat} defaultWidth={defaultWidth} otherWidths={otherWidths}/>
+    <img src={urlBuilder(url, {imageFormat: imageFormat, width: defaultWidth})} alt={alt}/>
   </picture>
 );
 
