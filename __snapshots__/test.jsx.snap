@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`adds value of "lazy" to loading attribute of img tag 1`] = `
+<div>
+  <picture>
+    <source
+      sizes="(max-width: 600px) 480px, (max-width: 1200px) 960px, 600px"
+      srcset="https://lh3.googleusercontent.com/ABC123etc=w480-rw 480w, https://lh3.googleusercontent.com/ABC123etc=w960-rw 960w, https://lh3.googleusercontent.com/ABC123etc=w1920-rw 1920w, https://lh3.googleusercontent.com/ABC123etc=w600-rw 600w, https://lh3.googleusercontent.com/ABC123etc=w1200-rw 1200w"
+      type="image/webp"
+    />
+    <source
+      sizes="(max-width: 600px) 480px, (max-width: 1200px) 960px, 600px"
+      srcset="https://lh3.googleusercontent.com/ABC123etc=w480-rp 480w, https://lh3.googleusercontent.com/ABC123etc=w960-rp 960w, https://lh3.googleusercontent.com/ABC123etc=w1920-rp 1920w, https://lh3.googleusercontent.com/ABC123etc=w600-rp 600w, https://lh3.googleusercontent.com/ABC123etc=w1200-rp 1200w"
+      type="image/png"
+    />
+    <img
+      alt="The alt"
+      loading="lazy"
+      src="https://lh3.googleusercontent.com/ABC123etc=w600-rp"
+    />
+  </picture>
+</div>
+`;
+
 exports[`de-dupes repeated src-sets 1`] = `
 <div>
   <picture>
@@ -15,6 +37,7 @@ exports[`de-dupes repeated src-sets 1`] = `
     />
     <img
       alt="The alt"
+      loading="eager"
       src="https://lh3.googleusercontent.com/ABC123etc=w600-rp"
     />
   </picture>
@@ -36,6 +59,7 @@ exports[`orders width lowest to highest, with default at the end 1`] = `
     />
     <img
       alt="The alt"
+      loading="eager"
       src="https://lh3.googleusercontent.com/ABC123etc=w600-rp"
     />
   </picture>
@@ -57,6 +81,7 @@ exports[`renders a 480px wide image on screens 600px and smaller and renders a 6
     />
     <img
       alt="The alt"
+      loading="eager"
       src="https://lh3.googleusercontent.com/ABC123etc=w600-rp"
     />
   </picture>
@@ -78,6 +103,7 @@ exports[`renders a webp source with a 1x and a 2x pixel density, a jpeg source w
     />
     <img
       alt="The alt"
+      loading="eager"
       src="https://lh3.googleusercontent.com/ABC123etc=w200-rj"
     />
   </picture>
@@ -99,6 +125,7 @@ exports[`renders a webp source with a 1x and a 2x pixel density, a png source wi
     />
     <img
       alt="The alt"
+      loading="eager"
       src="https://lh3.googleusercontent.com/ABC123etc=w300-rp"
     />
   </picture>

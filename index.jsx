@@ -14,7 +14,7 @@ const Source = ({imageFormat, defaultWidth, otherWidths, url}) => {
       width: width * 2
     })} ${width * 2}w`);
     sizes.push(`(max-width: ${screenWidth}px) ${width}px`);
-  };
+  }
 
   srcSets.push(`${urlBuilder(url, {
     imageFormat: imageFormat,
@@ -32,11 +32,12 @@ const Source = ({imageFormat, defaultWidth, otherWidths, url}) => {
     <source srcSet={dedupedSrcSet.join(', ')} sizes={sizes.join(', ')} type={`image/${imageFormat}`}/>
   )
 };
-const GooglePicture = ({alt, imageFormat, widths: {defaultWidth, ...otherWidths}, url}) => (
+const GooglePicture = ({alt, imageFormat, lazy = false, widths: {defaultWidth, ...otherWidths}, url}) => (
   <picture>
     <Source url={url} imageFormat={imageFormats.WEBP} defaultWidth={defaultWidth} otherWidths={otherWidths}/>
     <Source url={url} imageFormat={imageFormat} defaultWidth={defaultWidth} otherWidths={otherWidths}/>
-    <img src={urlBuilder(url, {imageFormat: imageFormat, width: defaultWidth})} alt={alt}/>
+    <img src={urlBuilder(url, {imageFormat: imageFormat, width: defaultWidth})} alt={alt}
+         loading={lazy ? "lazy" : "eager"}/>
   </picture>
 );
 
